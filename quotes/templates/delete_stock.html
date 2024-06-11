@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Delete Stock</h1>
+
+{% if ticker %}
+
+    {% for item in ticker %}
+       {{ item }} - <a href="{% url 'delete' item.id %}">Delete Stock</a> <br/>
+
+    {% endfor %}
+{% else %}
+    You dont have any stocks...
+        ticker = Stock.objects.all()
+{% endif %}
+
+{% endblock %}

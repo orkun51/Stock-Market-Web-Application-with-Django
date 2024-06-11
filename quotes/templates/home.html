@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if ticker %}
+<p>Company: {{ ticker }}</p>
+
+{% endif %}
+
+{% if api %}
+    {% if api == "Error..." %}
+<p>There was a problem with your request; please try again...</p>
+    {% else %}
+<h1>{{ api.companyName }}</h1>
+
+
+        {% if plot %}
+<div>
+    <h2>Stock Price Trend</h2>
+    <img src="data:image/png;base64,{{ plot }}" alt="Stock plot" style="max-width: 100%; height: auto;">
+</div>
+        {% endif %}
+    {% endif %}
+{% else %}
+<p>Please enter a stock ticker in the search bar.</p>
+{% endif %}
+
+{% endblock %}
+
+<!--
+<div>
+    <p>Price: ${{ api.iexRealtimePrice }}</p>
+    <p>Previous Close: ${{ api.previousClose }}</p>
+    <p>Market Cap: ${{ api.marketCap }}</p>
+    <p>Year to date change: ${{ api.ytdChange }}</p>
+    <p>Week 52 High: ${{ api.week52High }}</p>
+    <p>Week 52 Low: ${{ api.week52Low }}</p>
+</div>
+-->

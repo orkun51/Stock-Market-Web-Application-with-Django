@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Stock Price Graph</h1>
+<form method="GET" action="">
+    <label for="ticker">Enter Ticker Symbol:</label>
+    <input type="text" id="ticker" name="ticker" required>
+    <button type="submit">Update Graph</button>
+</form>
+<div id="graph">{{ plot|safe }}</div>
+{% endblock %}
